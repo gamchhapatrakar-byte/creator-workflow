@@ -5,3 +5,4 @@ Typeface: Tiro Devanagari Hindi (Regular, Italic) by Tiro Typeworks — SIL Open
 Lyric timings: faster-whisper (MIT) with the Whisper "medium" model (MIT); hand-corrected against the lyrics.
 Render and mastering tools: Lemo-Opuscar core tools; Playwright/Chromium (Apache-2.0); FFmpeg (LGPL/GPL).
 All scenery, characters and animation are drawn in code for this film (main.js).
+Portrait (outro): the user's own image, supplied by them for this film.

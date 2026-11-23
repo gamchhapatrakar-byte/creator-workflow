@@ -301,7 +301,28 @@ function render(t) {
   const v = g.createRadialGradient(W / 2, H * .55, H * .3, W / 2, H * .55, H * .75);    // vignette
   v.addColorStop(0, 'rgba(5,6,20,0)'); v.addColorStop(1, 'rgba(5,6,20,.55)'); g.fillStyle = v; g.fillRect(0, 0, W, H);
   g.globalAlpha = 1 - sm(t, 0, 1.2); if (g.globalAlpha > 0) { g.fillStyle = '#05060F'; g.fillRect(0, 0, W, H); } g.globalAlpha = 1;
+  portrait(t);
   lyrics(t);
+}
+
+// ---------------------------------------------------------------- the singer's portrait, in a glowing arch (outro)
+const PIMG = new Image(); PIMG.src = 'portrait.jpg'; await PIMG.decode();
+const PT = 80.4;
+function portrait(t) {
+  const a = sm(t, PT, PT + 1.4); if (a <= 0) return;
+  g.fillStyle = `rgba(5,6,20,${.5 * a})`; g.fillRect(0, 0, W, H);                   // the night steps back
+  const cx = 540, base = 1500, w = 640, h = 900, rise = 1 - eio(a);
+  glow(cx, base - h / 2, 620, C.warm, .32 * a);
+  g.save(); g.globalAlpha = a; g.translate(0, rise * 40);
+  archPath(cx, base, w, h); g.save(); g.clip();
+  const z = .45 * (1 + .05 * seg(t, PT, DUR)), iw = PIMG.width * z, ih = PIMG.height * z;
+  g.drawImage(PIMG, cx - .43 * iw, 900 - .33 * ih, iw, ih);
+  const sh = g.createLinearGradient(0, base - 260, 0, base); sh.addColorStop(0, 'rgba(10,13,34,0)'); sh.addColorStop(1, 'rgba(10,13,34,.6)');
+  g.fillStyle = sh; g.fillRect(0, base - 260, W, 260);
+  g.restore();
+  g.shadowColor = 'rgba(255,190,110,.9)'; g.shadowBlur = 30; g.strokeStyle = rgba(C.warm, .95); g.lineWidth = 6;
+  archPath(cx, base, w, h); g.stroke();
+  g.restore();
 }
 
 window.DUR = DUR; window.EV = [];
