@@ -251,7 +251,7 @@ function cam(t) {
 
 // ---------------------------------------------------------------- lyrics: italic serif, word by word, warm glow
 const TX = [];
-function fitSize(L) { let s = 76; g.font = `italic ${s}px Tiro`; const m = Math.max(g.measureText(L.a).width, g.measureText(L.b).width); return m > 940 ? Math.floor(s * 940 / m) : s; }
+function fitSize(L) { let s = 92; g.font = `italic ${s}px Tiro`; const m = Math.max(g.measureText(L.a).width, g.measureText(L.b).width); return m > 960 ? Math.floor(s * 940 / m) : s; }
 const SIZE = Math.min(...LY.map(fitSize));
 function lineText(id, s, ts, y, size, fade, t) {
   g.font = `italic ${size}px Tiro`; g.textBaseline = 'alphabetic';
@@ -268,11 +268,13 @@ function lineText(id, s, ts, y, size, fade, t) {
   if (t >= ts[0] && fade >= 1) TX.push({ id, text: s, x0: W / 2 - total / 2, y0: y - size, x1: W / 2 + total / 2, y1: y + size * .4 });
 }
 function lyrics(t) {
-  LY.forEach((L, i) => {
-    if (t < L.t0 - .2 || t > L.out + .5) return;
-    const fade = 1 - sm(t, L.out, L.out + .45);
-    lineText(`L${i}a`, L.a, L.ta, 330, SIZE, fade, t);
-    lineText(`L${i}b`, L.b, L.tb, 330 + SIZE * 1.45, SIZE, fade, t);
+  LY.forEach((L, i) => {                                   // one line on screen at a time
+    const parts = [[L.a, L.ta, L.tb[0] - .35], [L.b, L.tb, L.out]];
+    parts.forEach(([s, ts, out], j) => {
+      if (t < ts[0] - .2 || t > out + .5) return;
+      const fade = 1 - sm(t, out, out + .4);
+      lineText(`L${i}${'ab'[j]}`, s, ts, 400, SIZE, fade, t);
+    });
   });
   const title = (a, b, y0) => {
     const f = Math.min(a, b);
