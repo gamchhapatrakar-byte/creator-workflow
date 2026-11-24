@@ -1,0 +1,7 @@
+सपनों का घर — lyric film
+
+Song (audio and lyrics): the user's own track, made with Suno; used unchanged except loudness normalisation to -14 LUFS.
+Typeface: Hind (Regular, Medium, SemiBold, Bold) by Indian Type Foundry — SIL Open Font License 1.1, fonts/OFL.txt. Source: github.com/google/fonts
+Lyric timings: faster-whisper (MIT), Whisper "medium" model (OpenAI, MIT); hand-corrected against the lyrics.
+Render and mastering tools: Lemo-Opuscar core tools (see the library's LICENSE); Playwright/Chromium (Apache-2.0); FFmpeg (LGPL/GPL).
+Easing helpers (ease.js) adapted from the Lemo-Opuscar Swiss Motion Graphics demo.

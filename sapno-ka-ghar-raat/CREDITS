@@ -1,0 +1,8 @@
+सपनों का घर (रात) — lyric film
+
+Song (audio and lyrics): the user's own track, made with Suno; unchanged except loudness normalisation to -14 LUFS.
+Typeface: Tiro Devanagari Hindi (Regular, Italic) by Tiro Typeworks — SIL Open Font License 1.1, fonts/OFL.txt. Source: github.com/google/fonts
+Lyric timings: faster-whisper (MIT) with the Whisper "medium" model (MIT); hand-corrected against the lyrics.
+Render and mastering tools: Lemo-Opuscar core tools; Playwright/Chromium (Apache-2.0); FFmpeg (LGPL/GPL).
+All scenery, characters and animation are drawn in code for this film (main.js).
+Portrait (outro): the user's own image, supplied by them for this film.
